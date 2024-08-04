@@ -1,47 +1,118 @@
-.console {
-    position: fixed;
-    top: 84vh;
-    left: 26vw;
-    font-size: 2rem;
-    width: 13vw;
-    color: rgb(2, 10, 19);
-    font-weight: bold;
-    border-radius: 5rem;
-    border: 5rem;
-}
-
-#restart {
-    left: 36vw;
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
 #container {
-    width: 48vw;
-    margin: auto;
-    border: 0.3rem solid black;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+    background-color: #e6e6e6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s;
 }
 
-.btn {
-    width: 8vw;
-    height: 13vh;
-    margin: 1.5vh;
-    border-radius: 0.8vw;
-    font-size: 7.5vh;
-
+button {
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.3s, background-color 0.3s;
+    background-color: #fff;
 }
 
-.btn:hover {
-    background-color: purple;
+button:hover {
+    transform: scale(1.1);
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+.console {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.console:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 #score {
-    position: fixed;
-    top: 84vh;
-    left: 60vw;
-    font-size: 2rem;
-    width: 13vw;
-    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    font-size: 24px;
     font-weight: bold;
-    border-radius: 5rem;
-    border: 5rem;
-    padding-left: 2rem;
+    color: #333;
 }
+
+@media (max-width: 600px) {
+    #container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .console {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    #score {
+        font-size: 20px;
+    }
+}
+
+.game-over-animation {
+    animation: shake 0.5s;
+    animation-iteration-count: 2;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.game-over-message {
+    font-size: 32px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    animation: fadeIn 2s;
+    margin-top: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
